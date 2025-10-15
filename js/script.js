@@ -35,47 +35,82 @@ function counterMessage(i){
 function newUserMessage(text){
     if (isFirstOrStartMessage(countMessages)) {
         if (text.trim() == '/start') {
-            console.log('Привет, меня зовут Чат-бот, а как зовут тебя?');
+            console.log('Привет, меня зовут Чат-бот, а как зовут тебя? (Для справки: В любой момент ты можешь завершить общение командой /stop)');
             counterMessage(1);
         } else {
             console.log('Введите команду /start, для начала общения');
         }
     } else if (isNameMessage(countMessages)){
-        let userName = text.split(":")[1].trim();
-        if (text.trim().startsWith("/name:") & userName.length > 0) {
-            console.log('Привет, ' + userName + ' приятно познакомиться. Я умею считать, введи числа которые надо посчитать');
-            counterMessage(2);
+        if (text.trim().startsWith("/name:") /*& */) {
+            let userName = text.split(':')[1];
+            if (userName.trim().length > 0) {
+                console.log('Привет, ' + userName.trim() + ' приятно познакомиться. Я умею считать, введи числа которые надо посчитать.');
+                counterMessage(2);
+            } else {
+                console.log('Для продолжения общения введите команду /name: Ваше имя (пустое имя не принимается)');
+            }
+        } else if (text.trim() == '/stop'){
+            console.log('Всего доброго, если хочешь поговорить пиши /start');
+            counterMessage(0);
         } else {
             console.log('Для продолжения общения введите команду /name: Ваше имя (пустое имя не принимается)');
         }
     } else if (isNumberMessage(countMessages)){
-        let numbers = text.split(":")[1].trim();
-        let numbersArray = numbers.split(',');
-        if (text.trim().startsWith("/number:") & numbersArray.length == 2){
-            numberFirst = parseFloat(numbersArray[0]);
-            numberSecond = parseFloat(numbersArray[1]);
-            console.log('Для продолжения вычисления введите одно из действий: -, +, *, /');
-            counterMessage(3);
-        }else {
-            console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
-        }
+                if (text.trim().startsWith("/number:")){
+                    let numbers = text.split(':')[1].trim();
+                    let numbersArray = numbers.split(',');
+                    if (numbersArray.length == 2){
+                        numberFirst = parseFloat(numbersArray[0].trim());
+                        numberSecond = parseFloat(numbersArray[1].trim());
+                        console.log('Для вычисления введите одно из действий: -, +, *, /');
+                        counterMessage(3);
+                    } else {
+                        console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
+                    }
+                } else if (text.trim() == '/stop'){
+                    console.log('Всего доброго, если хочешь поговорить пиши /start');
+                    counterMessage(0);
+                } else {
+                    console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
+                }
     } else if (isOperationMessage(countMessages)){
-        switch(text) {
+        if (text.trim().length = 1) {
+            let result;
+            switch(text.trim()) {
             case '+':
-                console.log('Результат: ' + numberFirst + numberSecond);
+                result = numberFirst + numberSecond;
+                console.log('Результат: ' + result);
+                counterMessage(2);
+                console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
                 break;
             case '-':
-                console.log('Результат: ' + numberFirst - numberSecond);
+                result = numberFirst - numberSecond;
+                console.log('Результат: ' + result);
+                counterMessage(2);
+                console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
                 break;
             case '*':
-                console.log('Результат: ' + numberFirst * numberSecond);
+                result = numberFirst * numberSecond;
+                console.log('Результат: ' + result);
+                counterMessage(2);
+                console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
                 break;
             case '/':
-                console.log('Результат: ' + numberFirst / numberSecond);
+                result = numberFirst / numberSecond;
+                console.log('Результат: ' + result);
+                counterMessage(2);
+                console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
                 break;
             default:
-                console.log('Для продолжения вычисления введите одно из действий: -, +, *, /');
+                console.log('Для вычисления введите одно из действий: -, +, *, /');
+            }
+        } else if (text.trim() == '/stop'){
+            console.log('Всего доброго, если хочешь поговорить пиши /start');
+            counterMessage(0);
+        } else {
+            console.log('Для вычисления введите одно из действий: -, +, *, /');
         }
+        
     } 
        
     }
