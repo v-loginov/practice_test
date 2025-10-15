@@ -3,6 +3,7 @@ let userInput = document.getElementById("userInput");
 let sendUserMessage = document.getElementById("sendUserMessage");
 let numberFirst = 0;
 let numberSecond = 0;
+let messages = document.getElementById("chatMessages");
 
 function isFirstOrStartMessage(cntMessages){
     if (cntMessages == 0)
@@ -102,19 +103,28 @@ function newUserMessage(text){
                 console.log('Для продолжения общения введите команду /number: ПервоеЧисло, ВтороеЧисло (должно быть два числа разделённых запятой)');
                 break;
             default:
+                viewUserMessage('+++ Для вычисления введите одно из действий: -, +, *, /');
                 console.log('Для вычисления введите одно из действий: -, +, *, /');
             }
         } else if (text.trim() == '/stop'){
             console.log('Всего доброго, если хочешь поговорить пиши /start');
             counterMessage(0);
         } else {
-            console.log('Для вычисления введите одно из действий: -, +, *, /');
+            viewUserMessage('--- Для вычисления введите одно из действий: -, +, *, /');
+            console.log('--- Для вычисления введите одно из действий: -, +, *, /');
         }
         
     } 
        
     }
     
+function viewUserMessage(textUserMessage){
+    let userBubble = document.createElement('div');
+    userBubble.setAttribute("id", "userMsg");
+    userBubble.textContent = textUserMessage;
+    messages.prepend(userBubble);
+
+}
 
 sendUserMessage.addEventListener("click", () => {
       let text = userMessage.value;
