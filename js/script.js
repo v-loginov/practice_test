@@ -136,18 +136,32 @@ function newUserMessage(text){
     }
     
 function viewUserMessage(textUserMessage){
+    let divUserMsg = document.createElement('div');
+    divUserMsg.classList.add('container');
+    let userAvatar = document.createElement("img");
+    userAvatar.src = "img/user_avatar.png";
     let userBubble = document.createElement('div');
     userBubble.setAttribute("id", "userMsg");
     userBubble.textContent = textUserMessage;
-    messages.append(userBubble);
 
+    divUserMsg.appendChild(userAvatar);
+    divUserMsg.appendChild(userBubble);
+    messages.append(divUserMsg);
+    
 }
 
 function viewBotMessage(textBotMessage){
+    let divBotMsg = document.createElement('div');
+    divBotMsg.classList.add('container');
+    let botAvatar = document.createElement("img");
+    botAvatar.src = "img/bot_avatar.png";
     let botBubble = document.createElement('div');
     botBubble.setAttribute("id", "botMsg");
     botBubble.textContent = textBotMessage;
-    messages.append(botBubble);
+    
+    divBotMsg.appendChild(botAvatar);
+    divBotMsg.appendChild(botBubble);
+    messages.append(divBotMsg);
 
 }
 
