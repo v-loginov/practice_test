@@ -147,6 +147,8 @@ function viewUserMessage(textUserMessage){
     divUserMsg.appendChild(userAvatar);
     divUserMsg.appendChild(userBubble);
     messages.append(divUserMsg);
+
+    messages.scrollTop = messages.scrollHeight;
     
 }
 
@@ -162,6 +164,8 @@ function viewBotMessage(textBotMessage){
     divBotMsg.appendChild(botAvatar);
     divBotMsg.appendChild(botBubble);
     messages.append(divBotMsg);
+
+    messages.scrollTop = messages.scrollHeight;
 
 }
 
