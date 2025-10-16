@@ -5,3 +5,11 @@
         max-width: 200px;
         position: relative;
         }
+
+#botMsg {
+        background-color: #c5a8f3;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 200px;
+        position: relative;
+        }
