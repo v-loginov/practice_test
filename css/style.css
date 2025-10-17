@@ -26,13 +26,15 @@
         width: 700px;
         max-width: 700px;
         height: 90vh;
+        border-radius: 20px;
+        padding: 10px;
 }
 
 #chatMessages {
         background-color: #000000;
         width: 700px;
         max-width: 700px;
-        height: 90vh;
+        height: 70vh;
         overflow-y: scroll;
 }
 
@@ -40,4 +42,37 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+}
+
+.textWhite {
+        color: white;
+        text-align: center;
+}
+
+button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.sendImg {
+        width: 40px;
+        height: 40px;
+}
+
+#controlChat {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+#userMessage {
+        width: 400px;
+        font-size: 24px;
 }
