@@ -156,6 +156,40 @@ sendUserMessage.addEventListener("click", () => {
     });
 
 userMessage.addEventListener("input", () => {
+    let isInputMsg = document.getElementById('inputMsg');
+
+    if(isInputMsg){
+        messages.removeChild(inputMsg);
+        let divUserMsg = document.createElement('div');
+        divUserMsg.classList.add('container');
+        divUserMsg.setAttribute("id", "inputMsg");
+        let userAvatar = document.createElement("img");
+        userAvatar.src = "img/user_avatar.png";
+        let userBubble = document.createElement('div');
+        userBubble.setAttribute("id", "userMsg");
+        userBubble.textContent = '...';
+
+        divUserMsg.appendChild(userAvatar);
+        divUserMsg.appendChild(userBubble);
+        messages.append(divUserMsg);
+        messages.scrollTop = messages.scrollHeight;
+    } else {
+        let divUserMsg = document.createElement('div');
+        divUserMsg.classList.add('container');
+        divUserMsg.setAttribute("id", "inputMsg");
+        let userAvatar = document.createElement("img");
+        userAvatar.src = "img/user_avatar.png";
+        let userBubble = document.createElement('div');
+        userBubble.setAttribute("id", "userMsg");
+        userBubble.textContent = '...';
+
+        divUserMsg.appendChild(userAvatar);
+        divUserMsg.appendChild(userBubble);
+        messages.append(divUserMsg);
+        messages.scrollTop = messages.scrollHeight;
+    }
+    
+
     if(userMessage.value.length > 0) {
         sendUserMessage.disabled = false;
         sendButtonImg.setAttribute("src", "img/sendButton.png");
@@ -163,4 +197,12 @@ userMessage.addEventListener("input", () => {
         sendUserMessage.disabled = true;
         sendButtonImg.setAttribute("src", "img/sendButtonDisabled.png");
     }
+
+    
+
+    setTimeout(() => {
+        messages.removeChild(inputMsg);
+      }, 200);
+    //inputMsg.remove();
+    //messages.scrollTop = messages.scrollHeight;
     });
