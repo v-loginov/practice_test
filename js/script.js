@@ -1,6 +1,8 @@
 let countMessages = 0;
 let userInput = document.getElementById("userInput");
 let sendUserMessage = document.getElementById("sendUserMessage");
+let userMessage = document.getElementById("userMessage");
+let sendButtonImg = document.getElementById("sendButtonImg");
 let numberFirst = 0;
 let numberSecond = 0;
 let messages = document.getElementById("chatMessages");
@@ -172,4 +174,14 @@ function viewBotMessage(textBotMessage){
 sendUserMessage.addEventListener("click", () => {
       let text = userMessage.value;
       newUserMessage(text);
+    });
+
+userMessage.addEventListener("input", () => {
+    if(userMessage.value.length > 0) {
+        sendUserMessage.disabled = false;
+        sendButtonImg.setAttribute("src", "img/sendButton.png");
+    } else {
+        sendUserMessage.disabled = true;
+        sendButtonImg.setAttribute("src", "img/sendButtonDisabled.png");
+    }
     });
