@@ -23,7 +23,7 @@
 
 #chat {
         background-color: #000000;
-        width: 700px;
+        width: 100%;
         max-width: 700px;
         height: 90vh;
         border-radius: 20px;
@@ -32,7 +32,7 @@
 
 #chatMessages {
         background-color: #000000;
-        width: 700px;
+        width: 100%;
         max-width: 700px;
         height: 70vh;
         overflow-y: scroll;
@@ -73,6 +73,6 @@ button {
 }
 
 #userMessage {
-        width: 400px;
+        width: 80%;
         font-size: 24px;
 }
